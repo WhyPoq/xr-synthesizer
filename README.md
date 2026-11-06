@@ -29,3 +29,4 @@ For technologies, XR tools will be used to allow for all the interactions with t
 
 I will be working on the project alone
 
+![Keyboard cat](images/Keyboard_cat.jpg)
