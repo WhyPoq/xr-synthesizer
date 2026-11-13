@@ -1,0 +1,227 @@
+[gd_scene format=3 uid="uid://nqiyqnx42m61"]
+
+[ext_resource type="PackedScene" uid="uid://cj72tefr1k7m7" path="res://addons/godot-xr-tools/hands/model/hand_l.gltf" id="1"]
+[ext_resource type="PackedScene" uid="uid://the6y7swe6j0" path="res://addons/godot-xr-tools/hands/animations/left/AnimationPlayer.tscn" id="2"]
+[ext_resource type="Script" uid="uid://2vypvkq7n27l" path="res://addons/godot-xr-tools/hands/physics_hand.gd" id="3"]
+[ext_resource type="Resource" uid="uid://dertgu7k8alls" path="res://addons/godot-xr-tools/hands/poses/pose_default_left.tres" id="3_0aa1r"]
+[ext_resource type="Script" uid="uid://bfo7c10rq6xuu" path="res://addons/godot-xr-tools/hands/hand_physics_bone.gd" id="4"]
+[ext_resource type="Material" uid="uid://ds2dpvbpht0ea" path="res://addons/godot-xr-tools/hands/materials/labglove.tres" id="5"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://dl8yf7ipqotd1" path="res://addons/godot-xr-tools/hands/animations/left/hand_blend_tree.tres" id="9"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6mod1"]
+animation = &"Grip"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cxgjw"]
+animation = &"Grip"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_xkk3x"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:Little_Distal_L", "Armature/Skeleton3D:Little_Intermediate_L", "Armature/Skeleton3D:Little_Metacarpal_L", "Armature/Skeleton3D:Little_Proximal_L", "Armature/Skeleton3D:Middle_Distal_L", "Armature/Skeleton3D:Middle_Intermediate_L", "Armature/Skeleton3D:Middle_Metacarpal_L", "Armature/Skeleton3D:Middle_Proximal_L", "Armature/Skeleton3D:Ring_Distal_L", "Armature/Skeleton3D:Ring_Intermediate_L", "Armature/Skeleton3D:Ring_Metacarpal_L", "Armature/Skeleton3D:Ring_Proximal_L", "Armature/Skeleton3D:Thumb_Distal_L", "Armature/Skeleton3D:Thumb_Metacarpal_L", "Armature/Skeleton3D:Thumb_Proximal_L", "Armature/Skeleton:Little_Distal_L", "Armature/Skeleton:Little_Intermediate_L", "Armature/Skeleton:Little_Proximal_L", "Armature/Skeleton:Middle_Distal_L", "Armature/Skeleton:Middle_Intermediate_L", "Armature/Skeleton:Middle_Proximal_L", "Armature/Skeleton:Ring_Distal_L", "Armature/Skeleton:Ring_Intermediate_L", "Armature/Skeleton:Ring_Proximal_L", "Armature/Skeleton:Thumb_Distal_L", "Armature/Skeleton:Thumb_Proximal_L"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vbu2u"]
+animation = &"Grip 5"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_ha170"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:Index_Distal_L", "Armature/Skeleton3D:Index_Intermediate_L", "Armature/Skeleton3D:Index_Metacarpal_L", "Armature/Skeleton3D:Index_Proximal_L", "Armature/Skeleton:Index_Distal_L", "Armature/Skeleton:Index_Intermediate_L", "Armature/Skeleton:Index_Proximal_L"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_3c8if"]
+graph_offset = Vector2(-536, 11)
+nodes/ClosedHand1/node = SubResource("AnimationNodeAnimation_6mod1")
+nodes/ClosedHand1/position = Vector2(-600, 300)
+nodes/ClosedHand2/node = SubResource("AnimationNodeAnimation_cxgjw")
+nodes/ClosedHand2/position = Vector2(-360, 300)
+nodes/Grip/node = SubResource("AnimationNodeBlend2_xkk3x")
+nodes/Grip/position = Vector2(0, 20)
+nodes/OpenHand/node = SubResource("AnimationNodeAnimation_vbu2u")
+nodes/OpenHand/position = Vector2(-600, 100)
+nodes/Trigger/node = SubResource("AnimationNodeBlend2_ha170")
+nodes/Trigger/position = Vector2(-360, 20)
+node_connections = [&"output", 0, &"Grip", &"Grip", 0, &"Trigger", &"Grip", 1, &"ClosedHand2", &"Trigger", 0, &"OpenHand", &"Trigger", 1, &"ClosedHand1"]
+
+[node name="LeftPhysicsHand" type="Node3D" unique_id=85273371]
+script = ExtResource("3")
+bone_group = "LeftHand"
+hand_blend_tree = ExtResource("9")
+default_pose = ExtResource("3_0aa1r")
+
+[node name="Hand_L" parent="." unique_id=1807379778 instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, 0, 0.05)
+
+[node name="Skeleton3D" parent="Hand_L/Armature" parent_id_path=PackedInt32Array(1807379778, 9541786) index="0" unique_id=1954516552]
+bones/1/rotation = Quaternion(0.323537, -2.5658142e-05, -0.027220426, 0.9458239)
+bones/2/rotation = Quaternion(-0.09044407, -0.04151748, -0.16629349, 0.98104167)
+bones/3/rotation = Quaternion(-0.04661986, 0.02097099, 0.010327632, 0.9986392)
+bones/5/rotation = Quaternion(-0.0012845465, -0.011608094, -0.016825877, 0.99979025)
+bones/6/rotation = Quaternion(0.10292491, -0.009932083, -0.007944166, 0.9946078)
+bones/7/rotation = Quaternion(-0.012859, -0.023610815, -0.32325828, 0.9459289)
+bones/8/rotation = Quaternion(0.012057539, -0.009291937, -0.24747224, 0.96877545)
+bones/10/rotation = Quaternion(-0.035753887, -0.0004000325, 0.0063676415, 0.9993403)
+bones/11/rotation = Quaternion(-0.0026496367, -0.0011447113, -0.12599176, 0.9920271)
+bones/12/rotation = Quaternion(0.039422527, 0.0019339261, -0.22807404, 0.97284347)
+bones/13/rotation = Quaternion(-0.012339468, -0.008812943, -0.28066906, 0.9596848)
+bones/15/rotation = Quaternion(-0.070265576, 0.010190836, -0.024330735, 0.9971795)
+bones/16/rotation = Quaternion(-0.032063447, -0.002236244, -0.06863657, 0.99712384)
+bones/17/rotation = Quaternion(0.025345208, 0.008124622, -0.2490055, 0.9681363)
+bones/18/rotation = Quaternion(0.0025223217, 0.007880732, -0.2432038, 0.9699399)
+bones/20/rotation = Quaternion(-0.09173688, 0.020302717, -0.010182976, 0.9955242)
+bones/21/rotation = Quaternion(-0.06251818, -0.00022572002, -0.115392834, 0.99135065)
+bones/22/rotation = Quaternion(0.058578636, 0.021648303, -0.26990518, 0.9608596)
+bones/23/rotation = Quaternion(0.006871769, -0.0035727466, -0.21195254, 0.97724926)
+
+[node name="mesh_Hand_L" parent="Hand_L/Armature/Skeleton3D" index="0" unique_id=1274207419]
+surface_material_override/0 = ExtResource("5")
+
+[node name="BoneRoot" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="1" unique_id=659334394]
+transform = Transform3D(1, -1.8307694e-05, 1.526405e-08, 1.5267688e-08, 0.0016677378, 0.99999857, -1.8307695e-05, -0.9999985, 0.001667738, 3.8642522e-08, -1.8697472e-05, 0.027175574)
+bone_name = "Wrist_L"
+bone_idx = 0
+script = ExtResource("4")
+width_ratio = 0.8
+
+[node name="BoneThumbMetacarpal" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="2" unique_id=685914766]
+transform = Transform3D(0.99851906, 0.05146041, -0.017650949, -0.017650954, 0.61333454, 0.7896257, 0.051460408, -0.7881447, 0.6133346, 0.009999541, 0.020026565, 3.5932288e-05)
+bone_name = "Thumb_Metacarpal_L"
+bone_idx = 1
+script = ExtResource("4")
+length = 0.05
+
+[node name="BoneThumbProximal" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="3" unique_id=743958583]
+transform = Transform3D(0.92147875, 0.3839583, -0.058762792, -0.12405168, 0.43426406, 0.8922026, 0.36808717, -0.8148562, 0.44779575, 0.012310961, 0.0475754, -0.035364762)
+bone_name = "Thumb_Proximal_L"
+bone_idx = 2
+script = ExtResource("4")
+
+[node name="BoneThumbDistal" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="4" unique_id=656214485]
+transform = Transform3D(0.9301587, 0.36684424, 0.015170805, -0.15403655, 0.3523961, 0.923087, 0.33328292, -0.8609542, 0.38429177, 0.028493993, 0.06587872, -0.069709234)
+bone_name = "Thumb_Distal_L"
+bone_idx = 3
+script = ExtResource("4")
+length = 0.02
+
+[node name="BoneIndexMetacarpal" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="5" unique_id=1258294094]
+transform = Transform3D(0.9991648, 0.03365621, -0.023168128, 0.023198463, -0.0005111295, 0.99973065, 0.03363531, -0.99943316, -0.0012914749, -0.010000459, 0.022431742, 3.5928562e-05)
+bone_name = "Index_Metacarpal_L"
+bone_idx = 5
+script = ExtResource("4")
+length = 0.08
+width_ratio = 0.2
+
+[node name="BoneIndexProximal" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="6" unique_id=1588156732]
+transform = Transform3D(0.99782103, 0.041938446, -0.050932642, 0.04131695, 0.20466141, 0.97796035, 0.051438086, -0.97793394, 0.20248269, -0.0072955904, 0.022390667, -0.0802861)
+bone_name = "Index_Proximal_L"
+bone_idx = 6
+script = ExtResource("4")
+
+[node name="BoneIndexMiddle" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="7" unique_id=523011305]
+transform = Transform3D(0.7598513, 0.6444533, -0.0854741, -0.040588047, 0.17825112, 0.9831475, 0.64882857, -0.7435767, 0.16160142, -0.00569705, 0.030191608, -0.117561355)
+bone_name = "Index_Intermediate_L"
+bone_idx = 7
+script = ExtResource("4")
+length = 0.025
+bone_group = "IndexFinger"
+
+[node name="BoneIndexDistal" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="8" unique_id=1488782637]
+transform = Transform3D(0.35646763, 0.92711097, -0.11574115, -0.109286234, 0.16440362, 0.9803203, 0.92789406, -0.33680356, 0.159925, 0.014503772, 0.03577901, -0.14086926)
+bone_name = "Index_Distal_L"
+bone_idx = 8
+script = ExtResource("4")
+length = 0.02
+bone_group = "IndexFinger"
+
+[node name="BoneMiddleMetacarpal" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="9" unique_id=1824719995]
+transform = Transform3D(0.99991834, -0.0127165355, -0.0012561659, 0.0003654889, -0.06980224, 0.99756074, -0.012773201, -0.9974796, -0.0697919, -0.010000459, 0.0035541577, 3.5928562e-05)
+bone_name = "Middle_Metacarpal_L"
+bone_idx = 10
+script = ExtResource("4")
+length = 0.08
+width_ratio = 0.2
+
+[node name="BoneMiddleProximal" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="10" unique_id=666436567]
+transform = Transform3D(0.9713455, 0.23765375, -0.0029300377, 0.020733906, -0.07245027, 0.99715644, 0.23676565, -0.9686441, -0.07530175, -0.011023673, -0.0020623559, -0.080224514)
+bone_name = "Middle_Proximal_L"
+bone_idx = 11
+script = ExtResource("4")
+
+[node name="BoneMiddleMiddle" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="11" unique_id=305684235]
+transform = Transform3D(0.7649224, 0.6431615, -0.03517176, 0.029032733, 0.020122506, 0.9993758, 0.6434677, -0.76546603, -0.0032805875, -0.00032845605, -0.0053228606, -0.12381674)
+bone_name = "Middle_Intermediate_L"
+bone_idx = 12
+script = ExtResource("4")
+length = 0.025
+
+[node name="BoneMiddleDistal" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="12" unique_id=368683696]
+transform = Transform3D(0.29711512, 0.9545305, -0.024381766, 0.037445363, 0.013867281, 0.9992023, 0.95410705, -0.29779115, -0.03162256, 0.020520713, -0.0046705557, -0.14863062)
+bone_name = "Middle_Distal_L"
+bone_idx = 13
+script = ExtResource("4")
+length = 0.02
+
+[node name="BoneRingMetacarpal" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="13" unique_id=1909841314]
+transform = Transform3D(0.99860924, 0.04707398, 0.023740869, -0.016988235, -0.13898116, 0.9901492, 0.049909797, -0.9891754, -0.13798817, -0.010000458, -0.01307344, 3.5930425e-05)
+bone_name = "Ring_Metacarpal_L"
+bone_idx = 15
+script = ExtResource("4")
+length = 0.07
+width_ratio = 0.2
+
+[node name="BoneRingProximal" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="14" unique_id=870478298]
+transform = Transform3D(0.98296404, 0.18185404, 0.026658198, 0.010949358, -0.20272228, 0.97917485, 0.1834711, -0.96220183, -0.20125991, -0.006519627, -0.023350239, -0.073107496)
+bone_name = "Ring_Proximal_L"
+bone_idx = 16
+script = ExtResource("4")
+length = 0.028
+
+[node name="BoneRingMiddle" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="15" unique_id=1714345814]
+transform = Transform3D(0.77257895, 0.6346031, 0.02001641, 0.07948446, -0.12794775, 0.9885905, 0.62992376, -0.7621731, -0.1492908, 0.0007783938, -0.031485725, -0.11172181)
+bone_name = "Ring_Intermediate_L"
+bone_idx = 17
+script = ExtResource("4")
+length = 0.025
+
+[node name="BoneRingDistal" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="16" unique_id=1694409305]
+transform = Transform3D(0.38138747, 0.9240679, 0.02533904, 0.11410464, -0.07425989, 0.9906892, 0.9173458, -0.37494507, -0.13376221, 0.018418808, -0.03504236, -0.13290837)
+bone_name = "Ring_Distal_L"
+bone_idx = 18
+script = ExtResource("4")
+length = 0.02
+
+[node name="BonePinkyMetacarpal" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="17" unique_id=1579886640]
+transform = Transform3D(0.9989686, 0.01653178, 0.042288676, -0.038595337, -0.18142645, 0.98264676, 0.023917189, -0.98326534, -0.18060131, -4.582105e-07, -0.029973432, 3.5930425e-05)
+bone_name = "Little_Metacarpal_L"
+bone_idx = 20
+script = ExtResource("4")
+length = 0.07
+width_ratio = 0.18
+
+[node name="BonePinkyProximal" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="18" unique_id=1248659560]
+transform = Transform3D(0.9692122, 0.23930426, 0.057974495, 0.018553527, -0.30576056, 0.95192754, 0.24552666, -0.921544, -0.30078688, 0.0010858651, -0.04189518, -0.0645756)
+bone_name = "Little_Proximal_L"
+bone_idx = 21
+script = ExtResource("4")
+length = 0.02
+
+[node name="BonePinkyMiddle" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="19" unique_id=589675420]
+transform = Transform3D(0.6993308, 0.7138156, 0.037460223, 0.103946626, -0.15340722, 0.9826807, 0.70719945, -0.68332475, -0.1814813, 0.009012471, -0.052023053, -0.0951004)
+bone_name = "Little_Intermediate_L"
+bone_idx = 22
+script = ExtResource("4")
+length = 0.015
+
+[node name="BonePinkyDistal" type="BoneAttachment3D" parent="Hand_L/Armature/Skeleton3D" index="20" unique_id=698284715]
+transform = Transform3D(0.34089112, 0.9398443, 0.022029132, 0.1621622, -0.08186697, 0.9833622, 0.9260107, -0.3316469, -0.18031517, 0.02187856, -0.054788124, -0.10741691)
+bone_name = "Little_Distal_L"
+bone_idx = 23
+script = ExtResource("4")
+length = 0.015
+
+[node name="AnimationPlayer" parent="Hand_L" unique_id=1728382306 instance=ExtResource("2")]
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=406532047]
+root_node = NodePath("../Hand_L")
+tree_root = SubResource("AnimationNodeBlendTree_3c8if")
+anim_player = NodePath("../Hand_L/AnimationPlayer")
+parameters/Grip/blend_amount = 0.0
+parameters/Trigger/blend_amount = 0.0
+
+[editable path="Hand_L"]

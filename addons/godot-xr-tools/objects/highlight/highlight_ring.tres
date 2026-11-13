@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dfcfvwf6rxa5g"]
+
+[ext_resource type="Texture2D" uid="uid://0usmsl3rpj4o" path="res://addons/godot-xr-tools/images/ring.png" id="1"]
+
+[resource]
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_texture = ExtResource("1")
+billboard_mode = 1

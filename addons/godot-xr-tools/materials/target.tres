@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bx2xpf74qrlmv"]
+
+[ext_resource type="Texture2D" uid="uid://c5p2tjlwv0yc5" path="res://addons/godot-xr-tools/images/teleport_target.png" id="1"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+diffuse_mode = 1
+albedo_color = Color(0.176471, 0.313726, 0.862745, 1)
+albedo_texture = ExtResource("1")
