@@ -1,0 +1,83 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/synth/block.gd" id="e1"]
+
+[sub_resource type="StandardMaterial3D" id="r1"]
+albedo_color = Color(0.105, 0.13, 0.15, 1)
+metallic = 0.15
+roughness = 0.55
+
+[sub_resource type="BoxMesh" id="r2"]
+size = Vector3(0.28, 0.34, 0.025)
+
+[sub_resource type="StandardMaterial3D" id="r3"]
+albedo_color = Color(0.025, 0.03, 0.035, 1)
+metallic = 0
+roughness = 0.55
+
+[sub_resource type="StandardMaterial3D" id="r4"]
+albedo_color = Color(0.22, 0.25, 0.27, 1)
+metallic = 0.4
+roughness = 0.55
+
+[sub_resource type="CylinderMesh" id="r5"]
+top_radius = 0.105
+bottom_radius = 0.105
+height = 0.012
+radial_segments = 32
+
+[sub_resource type="CylinderMesh" id="r6"]
+top_radius = 0.087
+bottom_radius = 0.087
+height = 0.016
+radial_segments = 32
+
+[sub_resource type="CylinderMesh" id="r7"]
+top_radius = 0.034
+bottom_radius = 0.034
+height = 0.022
+radial_segments = 32
+
+[node name="speaker" type="Node3D"]
+script = ExtResource("e1")
+parameters = {}
+
+[node name="Panel" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -0.035)
+mesh = SubResource("r2")
+material_override = SubResource("r1")
+
+[node name="Title" type="Label3D" parent="."]
+position = Vector3(0, 0.14500000000000002, -0.015)
+text = "SPEAKER"
+font_size = 22
+pixel_size = 0.0015
+outline_size = 2
+modulate = Color(0.83, 0.91, 0.93, 1)
+
+[node name="Rim" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.025, -0.012)
+rotation = Vector3(1.5707963, 0, 0)
+mesh = SubResource("r5")
+material_override = SubResource("r4")
+
+[node name="Cone" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.025, -0.003)
+rotation = Vector3(1.5707963, 0, 0)
+mesh = SubResource("r6")
+material_override = SubResource("r3")
+
+[node name="DustCap" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.025, 0.005)
+rotation = Vector3(1.5707963, 0, 0)
+mesh = SubResource("r7")
+material_override = SubResource("r4")
+
+[node name="Dummy" type="Label3D" parent="."]
+position = Vector3(0, -0.145, 0)
+text = "DUMMY / SILENT"
+font_size = 15
+pixel_size = 0.0015
+outline_size = 2
+modulate = Color(0.83, 0.91, 0.93, 1)
+

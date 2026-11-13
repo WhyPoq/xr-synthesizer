@@ -1,0 +1,114 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/synth/keyboard.gd" id="e1"]
+[ext_resource type="PackedScene" path="res://scenes/synth/controls/piano_key.tscn" id="e2"]
+
+[sub_resource type="StandardMaterial3D" id="r1"]
+albedo_color = Color(0.105, 0.13, 0.15, 1)
+metallic = 0.15
+roughness = 0.55
+
+[sub_resource type="BoxMesh" id="r2"]
+size = Vector3(0.65, 0.28, 0.025)
+
+[sub_resource type="StandardMaterial3D" id="r3"]
+albedo_color = Color(0.025, 0.03, 0.035, 1)
+metallic = 0
+roughness = 0.55
+
+[node name="small_keyboard" type="Node3D"]
+script = ExtResource("e1")
+
+[node name="Panel" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -0.035)
+mesh = SubResource("r2")
+material_override = SubResource("r1")
+
+[node name="Title" type="Label3D" parent="."]
+position = Vector3(0, 0.11500000000000002, -0.015)
+text = "KEYBOARD"
+font_size = 22
+pixel_size = 0.0015
+outline_size = 2
+modulate = Color(0.83, 0.91, 0.93, 1)
+
+[node name="Keys" type="Node3D" parent="."]
+
+
+[node name="Key0" parent="Keys" instance=ExtResource("e2")]
+position = Vector3(-0.259, -0.025, 0)
+metadata/semitone = 0
+
+[node name="Key2" parent="Keys" instance=ExtResource("e2")]
+position = Vector3(-0.185, -0.025, 0)
+metadata/semitone = 2
+
+[node name="Key4" parent="Keys" instance=ExtResource("e2")]
+position = Vector3(-0.11099999999999999, -0.025, 0)
+metadata/semitone = 4
+
+[node name="Key5" parent="Keys" instance=ExtResource("e2")]
+position = Vector3(-0.037, -0.025, 0)
+metadata/semitone = 5
+
+[node name="Key7" parent="Keys" instance=ExtResource("e2")]
+position = Vector3(0.037, -0.025, 0)
+metadata/semitone = 7
+
+[node name="Key9" parent="Keys" instance=ExtResource("e2")]
+position = Vector3(0.11099999999999999, -0.025, 0)
+metadata/semitone = 9
+
+[node name="Key11" parent="Keys" instance=ExtResource("e2")]
+position = Vector3(0.185, -0.025, 0)
+metadata/semitone = 11
+
+[node name="Key12" parent="Keys" instance=ExtResource("e2")]
+position = Vector3(0.259, -0.025, 0)
+metadata/semitone = 12
+
+[node name="Key1" parent="Keys" instance=ExtResource("e2")]
+position = Vector3(-0.22199999999999998, 0.012, 0.027)
+scale = Vector3(0.65, 0.6, 1)
+metadata/semitone = 1
+metadata/rest_color = Color(0.025, 0.03, 0.035, 1)
+
+[node name="Mesh" parent="Keys/Key1/Moving"]
+material_override = SubResource("r3")
+
+[node name="Key3" parent="Keys" instance=ExtResource("e2")]
+position = Vector3(-0.148, 0.012, 0.027)
+scale = Vector3(0.65, 0.6, 1)
+metadata/semitone = 3
+metadata/rest_color = Color(0.025, 0.03, 0.035, 1)
+
+[node name="Mesh" parent="Keys/Key3/Moving"]
+material_override = SubResource("r3")
+
+[node name="Key6" parent="Keys" instance=ExtResource("e2")]
+position = Vector3(0, 0.012, 0.027)
+scale = Vector3(0.65, 0.6, 1)
+metadata/semitone = 6
+metadata/rest_color = Color(0.025, 0.03, 0.035, 1)
+
+[node name="Mesh" parent="Keys/Key6/Moving"]
+material_override = SubResource("r3")
+
+[node name="Key8" parent="Keys" instance=ExtResource("e2")]
+position = Vector3(0.074, 0.012, 0.027)
+scale = Vector3(0.65, 0.6, 1)
+metadata/semitone = 8
+metadata/rest_color = Color(0.025, 0.03, 0.035, 1)
+
+[node name="Mesh" parent="Keys/Key8/Moving"]
+material_override = SubResource("r3")
+
+[node name="Key10" parent="Keys" instance=ExtResource("e2")]
+position = Vector3(0.148, 0.012, 0.027)
+scale = Vector3(0.65, 0.6, 1)
+metadata/semitone = 10
+metadata/rest_color = Color(0.025, 0.03, 0.035, 1)
+
+[node name="Mesh" parent="Keys/Key10/Moving"]
+material_override = SubResource("r3")
+

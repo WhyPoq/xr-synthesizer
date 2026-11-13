@@ -1,0 +1,161 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/synth/control.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/synth/slider_cap.gd" id="cap_script"]
+
+[sub_resource type="StandardMaterial3D" id="r1"]
+albedo_color = Color(0.055, 0.065, 0.075, 1)
+metallic = 0
+roughness = 0.55
+
+[sub_resource type="StandardMaterial3D" id="r2"]
+albedo_color = Color(0.6, 0.65, 0.69, 1)
+metallic = 0.7
+roughness = 0.55
+
+[sub_resource type="StandardMaterial3D" id="r3"]
+albedo_color = Color(0.45, 0.84, 0.75, 1)
+metallic = 0
+roughness = 0.55
+
+[sub_resource type="StandardMaterial3D" id="r4"]
+albedo_color = Color(0.92, 0.93, 0.88, 1)
+metallic = 0
+roughness = 0.55
+
+[sub_resource type="BoxShape3D" id="r5"]
+size = Vector3(0.07, 0.23, 0.08)
+
+[sub_resource type="BoxMesh" id="r6"]
+size = Vector3(0.009, 0.18, 0.006)
+
+[sub_resource type="BoxMesh" id="r7"]
+size = Vector3(0.012, 0.002, 0.002)
+
+[sub_resource type="BoxMesh" id="r8"]
+size = Vector3(0.012, 0.002, 0.002)
+
+[sub_resource type="BoxMesh" id="r9"]
+size = Vector3(0.012, 0.002, 0.002)
+
+[sub_resource type="BoxMesh" id="r10"]
+size = Vector3(0.012, 0.002, 0.002)
+
+[sub_resource type="BoxMesh" id="r11"]
+size = Vector3(0.012, 0.002, 0.002)
+
+[sub_resource type="BoxMesh" id="r12"]
+size = Vector3(0.012, 0.002, 0.002)
+
+[sub_resource type="BoxMesh" id="r13"]
+size = Vector3(0.012, 0.002, 0.002)
+
+[sub_resource type="BoxMesh" id="r14"]
+size = Vector3(0.045, 0.024, 0.026)
+
+[sub_resource type="BoxMesh" id="r15"]
+size = Vector3(0.038, 0.003, 0.002)
+
+[sub_resource type="BoxShape3D" id="CapSolidShape"]
+size = Vector3(0.045, 0.024, 0.026)
+
+[sub_resource type="PhysicsMaterial" id="CapFriction"]
+friction = 0.8
+bounce = 0.0
+
+[node name="mixer_slider" type="Area3D"]
+script = ExtResource("e1")
+kind = 2
+collision_layer = 1
+collision_mask = 1
+caption = "LEVEL"
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("r5")
+
+[node name="Moving" type="RigidBody3D" parent="."]
+script = ExtResource("cap_script")
+mass = 0.04
+gravity_scale = 0.0
+physics_material_override = SubResource("CapFriction")
+linear_damp = 18.0
+angular_damp = 18.0
+lock_rotation = true
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 8
+collision_layer = 0
+collision_mask = 128
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Moving"]
+position = Vector3(0, 0, 0.009)
+shape = SubResource("CapSolidShape")
+
+[node name="Slot" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -0.01)
+mesh = SubResource("r6")
+material_override = SubResource("r1")
+
+[node name="Tick0" type="MeshInstance3D" parent="."]
+position = Vector3(0.022, -0.075, -0.006)
+mesh = SubResource("r7")
+material_override = SubResource("r2")
+
+[node name="Tick1" type="MeshInstance3D" parent="."]
+position = Vector3(0.022, -0.049999999999999996, -0.006)
+mesh = SubResource("r8")
+material_override = SubResource("r2")
+
+[node name="Tick2" type="MeshInstance3D" parent="."]
+position = Vector3(0.022, -0.024999999999999994, -0.006)
+mesh = SubResource("r9")
+material_override = SubResource("r2")
+
+[node name="Tick3" type="MeshInstance3D" parent="."]
+position = Vector3(0.022, 1.3877787807814457e-17, -0.006)
+mesh = SubResource("r10")
+material_override = SubResource("r2")
+
+[node name="Tick4" type="MeshInstance3D" parent="."]
+position = Vector3(0.022, 0.02500000000000001, -0.006)
+mesh = SubResource("r11")
+material_override = SubResource("r2")
+
+[node name="Tick5" type="MeshInstance3D" parent="."]
+position = Vector3(0.022, 0.05, -0.006)
+mesh = SubResource("r12")
+material_override = SubResource("r2")
+
+[node name="Tick6" type="MeshInstance3D" parent="."]
+position = Vector3(0.022, 0.07500000000000002, -0.006)
+mesh = SubResource("r13")
+material_override = SubResource("r2")
+
+[node name="Cap" type="MeshInstance3D" parent="Moving"]
+position = Vector3(0, 0, 0.009)
+mesh = SubResource("r14")
+material_override = SubResource("r2")
+
+[node name="Line" type="MeshInstance3D" parent="Moving"]
+position = Vector3(0, 0, 0.023)
+mesh = SubResource("r15")
+material_override = SubResource("r1")
+
+[node name="Caption" type="Label3D" parent="."]
+position = Vector3(0, 0.145, 0.005)
+text = ""
+font_size = 18
+pixel_size = 0.0015
+outline_size = 2
+modulate = Color(0.83, 0.91, 0.93, 1)
+
+[node name="Readout" type="Label3D" parent="."]
+position = Vector3(0, -0.14, 0.005)
+text = ""
+font_size = 16
+pixel_size = 0.0015
+outline_size = 2
+modulate = Color(0.83, 0.91, 0.93, 1)
+

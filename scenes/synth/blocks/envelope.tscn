@@ -1,0 +1,70 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/synth/block.gd" id="e1"]
+[ext_resource type="PackedScene" path="res://scenes/synth/controls/toggle_switch.tscn" id="e2"]
+[ext_resource type="PackedScene" path="res://scenes/synth/controls/mixer_slider.tscn" id="e3"]
+[ext_resource type="PackedScene" path="res://scenes/synth/controls/mixer_slider.tscn" id="e4"]
+[ext_resource type="PackedScene" path="res://scenes/synth/controls/mixer_slider.tscn" id="e5"]
+[ext_resource type="PackedScene" path="res://scenes/synth/controls/mixer_slider.tscn" id="e6"]
+
+[sub_resource type="StandardMaterial3D" id="r1"]
+albedo_color = Color(0.105, 0.13, 0.15, 1)
+metallic = 0.15
+roughness = 0.55
+
+[sub_resource type="BoxMesh" id="r2"]
+size = Vector3(0.57, 0.40, 0.025)
+
+[node name="envelope" type="Node3D"]
+script = ExtResource("e1")
+parameters = {"enabled": NodePath("Enable"), "attack": NodePath("Attack"), "decay": NodePath("Decay"), "sustain": NodePath("Sustain"), "release": NodePath("Release")}
+
+[node name="Panel" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -0.035)
+mesh = SubResource("r2")
+material_override = SubResource("r1")
+
+[node name="Title" type="Label3D" parent="."]
+position = Vector3(0, 0.175, -0.015)
+text = "ENVELOPE"
+font_size = 22
+pixel_size = 0.0015
+outline_size = 2
+modulate = Color(0.83, 0.91, 0.93, 1)
+
+[node name="Enable" parent="." instance=ExtResource("e2")]
+position = Vector3(-0.225, -0.015, 0)
+caption = "ENABLE"
+
+[node name="Attack" parent="." instance=ExtResource("e3")]
+position = Vector3(-0.105, -0.015, 0)
+caption = "ATTACK"
+value = 0.2
+
+[node name="Decay" parent="." instance=ExtResource("e4")]
+position = Vector3(0, -0.015, 0)
+caption = "DECAY"
+value = 0.2
+
+[node name="Sustain" parent="." instance=ExtResource("e5")]
+position = Vector3(0.105, -0.015, 0)
+caption = "SUSTAIN"
+value = 0.7
+
+[node name="Release" parent="." instance=ExtResource("e6")]
+position = Vector3(0.21000000000000002, -0.015, 0)
+caption = "RELEASE"
+value = 0.2
+
+[node name="Caption" parent="Attack"]
+font_size = 15
+
+[node name="Caption" parent="Decay"]
+font_size = 15
+
+[node name="Caption" parent="Sustain"]
+font_size = 15
+
+[node name="Caption" parent="Release"]
+font_size = 15
+

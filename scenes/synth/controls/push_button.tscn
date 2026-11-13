@@ -1,0 +1,73 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/synth/control.gd" id="e1"]
+
+[sub_resource type="StandardMaterial3D" id="r1"]
+albedo_color = Color(0.055, 0.065, 0.075, 1)
+metallic = 0
+roughness = 0.55
+
+[sub_resource type="StandardMaterial3D" id="r2"]
+albedo_color = Color(0.6, 0.65, 0.69, 1)
+metallic = 0.7
+roughness = 0.55
+
+[sub_resource type="StandardMaterial3D" id="r3"]
+albedo_color = Color(0.45, 0.84, 0.75, 1)
+metallic = 0
+roughness = 0.55
+
+[sub_resource type="StandardMaterial3D" id="r4"]
+albedo_color = Color(0.92, 0.93, 0.88, 1)
+metallic = 0
+roughness = 0.55
+
+[sub_resource type="BoxShape3D" id="r5"]
+size = Vector3(0.085, 0.085, 0.09)
+
+[sub_resource type="BoxMesh" id="r6"]
+size = Vector3(0.076, 0.055, 0.012)
+
+[sub_resource type="BoxMesh" id="r7"]
+size = Vector3(0.065, 0.044, 0.03)
+
+[sub_resource type="BoxMesh" id="r8"]
+size = Vector3(0.041, 0.004, 0.002)
+
+[node name="push_button" type="Area3D"]
+script = ExtResource("e1")
+kind = 3
+collision_layer = 1
+collision_mask = 1
+latching = true
+caption = "BUTTON"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("r5")
+
+[node name="Moving" type="Node3D" parent="."]
+
+
+[node name="Socket" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -0.014)
+mesh = SubResource("r6")
+material_override = SubResource("r2")
+
+[node name="Cap" type="MeshInstance3D" parent="Moving"]
+position = Vector3(0, 0, 0.005)
+mesh = SubResource("r7")
+material_override = SubResource("r1")
+
+[node name="Stripe" type="MeshInstance3D" parent="Moving"]
+position = Vector3(0, 0.01, 0.021)
+mesh = SubResource("r8")
+material_override = SubResource("r3")
+
+[node name="Caption" type="Label3D" parent="."]
+position = Vector3(0, 0.075, 0.005)
+text = ""
+font_size = 18
+pixel_size = 0.0015
+outline_size = 2
+modulate = Color(0.83, 0.91, 0.93, 1)
+

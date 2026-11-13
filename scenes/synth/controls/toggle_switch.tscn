@@ -1,0 +1,74 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/synth/control.gd" id="control"]
+
+[sub_resource type="StandardMaterial3D" id="HousingMaterial"]
+albedo_color = Color(0.025, 0.03, 0.035, 1)
+
+[sub_resource type="StandardMaterial3D" id="RockerMaterial"]
+albedo_color = Color(0.14, 0.16, 0.18, 1)
+
+[sub_resource type="StandardMaterial3D" id="IndicatorMaterial"]
+albedo_color = Color(0.45, 0.84, 0.75, 1)
+
+[sub_resource type="BoxMesh" id="Housing"]
+size = Vector3(0.06, 0.082, 0.018)
+
+[sub_resource type="BoxMesh" id="Rocker"]
+size = Vector3(0.045, 0.066, 0.018)
+
+[sub_resource type="BoxMesh" id="Indicator"]
+size = Vector3(0.022, 0.004, 0.002)
+
+[sub_resource type="BoxShape3D" id="Touch"]
+size = Vector3(0.06, 0.082, 0.05)
+
+[node name="toggle_switch" type="Area3D"]
+script = ExtResource("control")
+caption = "POWER"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("Touch")
+
+[node name="Housing" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -0.01)
+mesh = SubResource("Housing")
+material_override = SubResource("HousingMaterial")
+
+[node name="Moving" type="Node3D" parent="."]
+
+[node name="Rocker" type="MeshInstance3D" parent="Moving"]
+mesh = SubResource("Rocker")
+material_override = SubResource("RockerMaterial")
+
+[node name="Indicator" type="MeshInstance3D" parent="Moving"]
+position = Vector3(0, 0.009, 0.010)
+mesh = SubResource("Indicator")
+material_override = SubResource("IndicatorMaterial")
+
+[node name="OnMark" type="Label3D" parent="Moving"]
+position = Vector3(0, 0.022, 0.011)
+text = "I"
+font_size = 14
+pixel_size = 0.001
+outline_size = 0
+
+[node name="OffMark" type="Label3D" parent="Moving"]
+position = Vector3(0, -0.018, 0.011)
+text = "O"
+font_size = 14
+pixel_size = 0.001
+outline_size = 0
+
+[node name="Caption" type="Label3D" parent="."]
+position = Vector3(0, 0.075, 0.005)
+font_size = 18
+pixel_size = 0.0015
+outline_size = 2
+
+[node name="Readout" type="Label3D" parent="."]
+position = Vector3(0, -0.072, 0.005)
+font_size = 16
+pixel_size = 0.0015
+outline_size = 2
+

@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/synth/button_group.gd" id="group"]
+[ext_resource type="PackedScene" path="res://scenes/synth/controls/push_button.tscn" id="button"]
+
+[node name="WaveButtons" type="Node3D"]
+script = ExtResource("group")
+options = PackedStringArray("SIN", "TRIANGLE", "SAW", "SQUARE")
+selected_index = 0
+
+[node name="Buttons" type="Node3D" parent="."]
+
+[node name="Sin" parent="Buttons" instance=ExtResource("button")]
+position = Vector3(-0.052, 0.065, 0)
+
+[node name="Triangle" parent="Buttons" instance=ExtResource("button")]
+position = Vector3(0.052, 0.065, 0)
+
+[node name="Saw" parent="Buttons" instance=ExtResource("button")]
+position = Vector3(-0.052, -0.065, 0)
+
+[node name="Square" parent="Buttons" instance=ExtResource("button")]
+position = Vector3(0.052, -0.065, 0)
+
+[node name="Caption" parent="Buttons/Triangle"]
+font_size = 14
+
+[node name="Caption" parent="Buttons/Square"]
+font_size = 14

@@ -1,0 +1,35 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/synth/block.gd" id="e1"]
+[ext_resource type="PackedScene" path="res://scenes/synth/controls/mixer_slider.tscn" id="e2"]
+
+[sub_resource type="StandardMaterial3D" id="r1"]
+albedo_color = Color(0.105, 0.13, 0.15, 1)
+metallic = 0.15
+roughness = 0.55
+
+[sub_resource type="BoxMesh" id="r2"]
+size = Vector3(0.2, 0.4, 0.025)
+
+[node name="filter" type="Node3D"]
+script = ExtResource("e1")
+parameters = {"cutoff": NodePath("Slider")}
+
+[node name="Panel" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -0.035)
+mesh = SubResource("r2")
+material_override = SubResource("r1")
+
+[node name="Title" type="Label3D" parent="."]
+position = Vector3(0, 0.17500000000000002, -0.015)
+text = "FILTER"
+font_size = 22
+pixel_size = 0.0015
+outline_size = 2
+modulate = Color(0.83, 0.91, 0.93, 1)
+
+[node name="Slider" parent="." instance=ExtResource("e2")]
+position = Vector3(0, -0.015, 0)
+caption = "CUTOFF"
+value = 0.5
+

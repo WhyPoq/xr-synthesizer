@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cend6ikv2su2t"]
 
+[ext_resource type="Script" path="res://scripts/synth/physical_finger.gd" id="physical_finger"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ieg28"]
 radius = 0.02
 height = 0.04
@@ -10,6 +12,7 @@ bone_name = "RightLittleTip"
 bone_idx = 24
 
 [node name="right_hand" type="Area3D" parent="." unique_id=1362912656 groups=["finger_tip"]]
+script = ExtResource("physical_finger")
 transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="right_hand" unique_id=710816926]

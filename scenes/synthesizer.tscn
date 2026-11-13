@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cxfr8htf84tg0"]
 
+[ext_resource type="PackedScene" path="res://scenes/synth/synth_panel.tscn" id="1_synth_panel"]
+[ext_resource type="Script" path="res://scripts/synth/physical_finger.gd" id="physical_finger"]
 [ext_resource type="PackedScene" uid="uid://cf4fvq6d5wdue" path="res://examples/hands/label.tscn" id="2_mprnd"]
 [ext_resource type="Script" uid="uid://ox8smfnahvcm" path="res://examples/hands/xr_camera_3d.gd" id="6_d0w0i"]
 [ext_resource type="Script" uid="uid://e0tg3ajyvad4" path="res://examples/hands/hand.gd" id="7_2uk4a"]
@@ -14,8 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://bnf6crykenhd2" path="res://addons/hand_pose_detector/hands/RightHandHumanoid.gltf" id="16_ub26f"]
 [ext_resource type="PackedScene" uid="uid://df5hynbooj1uj" path="res://addons/hand_pose_detector/hand_pose_detector.tscn" id="17_mn7hi"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="18_ewgos"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_mihkc"]
 
 [sub_resource type="Resource" id="Resource_c8e3v"]
 script = ExtResource("11_x5c72")
@@ -190,8 +190,8 @@ ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="content" type="Node3D" parent="." unique_id=351446812]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="content" unique_id=367533908]
-mesh = SubResource("BoxMesh_mihkc")
+[node name="SynthPanel" parent="content" unique_id=345685378 instance=ExtResource("1_synth_panel")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=811185315]
 
@@ -199,7 +199,7 @@ mesh = SubResource("BoxMesh_mihkc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10548, 0)
 near = 0.001
 script = ExtResource("6_d0w0i")
-distance_in_front = 1
+distance_in_front = 0.5
 spawn_in_front = NodePath("../../content")
 
 [node name="AudioListener3D" type="AudioListener3D" parent="XROrigin3D/XRCamera3D" unique_id=2071563029]
@@ -288,6 +288,7 @@ bone_name = "RightIndexTip"
 bone_idx = 9
 
 [node name="right_hand" type="Area3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip5" unique_id=1248967195 groups=["finger_tip"]]
+script = ExtResource("physical_finger")
 transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip5/right_hand" unique_id=734859244]

@@ -1,0 +1,50 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/synth/block.gd" id="e1"]
+
+[sub_resource type="StandardMaterial3D" id="r1"]
+albedo_color = Color(0.105, 0.13, 0.15, 1)
+metallic = 0.15
+roughness = 0.55
+
+[sub_resource type="BoxMesh" id="r2"]
+size = Vector3(0.36, 0.34, 0.025)
+
+[sub_resource type="StandardMaterial3D" id="r3"]
+albedo_color = Color(0.015, 0.035, 0.04, 1)
+metallic = 0
+roughness = 0.55
+
+[sub_resource type="BoxMesh" id="r4"]
+size = Vector3(0.31, 0.20, 0.004)
+
+[node name="wave_display" type="Node3D"]
+script = ExtResource("e1")
+parameters = {}
+
+[node name="Panel" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -0.035)
+mesh = SubResource("r2")
+material_override = SubResource("r1")
+
+[node name="Title" type="Label3D" parent="."]
+position = Vector3(0, 0.14500000000000002, -0.015)
+text = "FINAL WAVE"
+font_size = 22
+pixel_size = 0.0015
+outline_size = 2
+modulate = Color(0.83, 0.91, 0.93, 1)
+
+[node name="Screen" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.018, -0.018)
+mesh = SubResource("r4")
+material_override = SubResource("r3")
+
+[node name="Placeholder" type="Label3D" parent="."]
+position = Vector3(0, -0.018, -0.013)
+text = "WAVE DISPLAY\nMOCKUP"
+font_size = 18
+pixel_size = 0.0015
+outline_size = 2
+modulate = Color(0.83, 0.91, 0.93, 1)
+

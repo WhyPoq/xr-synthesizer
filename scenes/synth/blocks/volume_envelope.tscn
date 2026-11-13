@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/synth/blocks/envelope.tscn" id="e1"]
+
+
+
+[node name="volume_envelope" instance=ExtResource("e1")]
+
+
+[node name="Title" parent="." index="1"]
+text = "VOLUME ENVELOPE"
+

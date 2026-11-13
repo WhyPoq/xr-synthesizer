@@ -1,0 +1,66 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/synth/controls/toggle_switch.tscn" id="e1"]
+[ext_resource type="PackedScene" path="res://scenes/synth/blocks/base_frequency.tscn" id="e2"]
+[ext_resource type="PackedScene" path="res://scenes/synth/blocks/wave_selector.tscn" id="e3"]
+[ext_resource type="PackedScene" path="res://scenes/synth/blocks/filter.tscn" id="e4"]
+[ext_resource type="PackedScene" path="res://scenes/synth/blocks/volume.tscn" id="e5"]
+[ext_resource type="PackedScene" path="res://scenes/synth/blocks/speaker.tscn" id="e6"]
+[ext_resource type="PackedScene" path="res://scenes/synth/blocks/filter_envelope.tscn" id="e7"]
+[ext_resource type="PackedScene" path="res://scenes/synth/blocks/volume_envelope.tscn" id="e8"]
+[ext_resource type="PackedScene" path="res://scenes/synth/blocks/wave_display.tscn" id="e9"]
+[ext_resource type="PackedScene" path="res://scenes/synth/blocks/small_keyboard.tscn" id="e10"]
+
+
+
+[node name="SynthPanel" type="Node3D"]
+
+
+[node name="Power" parent="." instance=ExtResource("e1")]
+position = Vector3(-0.7, 0.51, 0)
+caption = "POWER"
+
+[node name="BaseFrequency" parent="." instance=ExtResource("e2")]
+position = Vector3(-0.46, 0.22, 0)
+
+
+[node name="Wave" parent="." instance=ExtResource("e3")]
+position = Vector3(-0.11, 0.22, 0)
+
+
+[node name="Filter" parent="." instance=ExtResource("e4")]
+position = Vector3(0.15, 0.22, 0)
+
+
+[node name="Volume" parent="." instance=ExtResource("e5")]
+position = Vector3(0.37, 0.22, 0)
+
+
+[node name="Speaker" parent="." instance=ExtResource("e6")]
+position = Vector3(0.64, 0.22, 0)
+
+
+[node name="FilterEnvelope" parent="." instance=ExtResource("e7")]
+position = Vector3(-0.45, -0.205, 0)
+
+
+[node name="VolumeEnvelope" parent="." instance=ExtResource("e8")]
+position = Vector3(0.16, -0.205, 0)
+
+
+[node name="WaveDisplay" parent="." instance=ExtResource("e9")]
+position = Vector3(0.66, -0.205, 0)
+
+
+[node name="Keyboard" parent="." instance=ExtResource("e10")]
+position = Vector3(-0.1, -0.56, 0)
+
+
+[node name="Heading" type="Label3D" parent="."]
+position = Vector3(0.05, 0.51, 0)
+text = "SYNTHESIZER / INTERACTION PROTOTYPE"
+font_size = 25
+pixel_size = 0.0015
+outline_size = 2
+modulate = Color(0.83, 0.91, 0.93, 1)
+

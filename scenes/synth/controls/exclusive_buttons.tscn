@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/synth/button_group.gd" id="e1"]
+[ext_resource type="PackedScene" path="res://scenes/synth/controls/push_button.tscn" id="e2"]
+
+
+
+[node name="ExclusiveButtons" type="Node3D"]
+script = ExtResource("e1")
+
+[node name="Buttons" type="Node3D" parent="."]
+
+
+[node name="Low" parent="Buttons" instance=ExtResource("e2")]
+position = Vector3(-0.095, 0, 0)
+
+[node name="Middle" parent="Buttons" instance=ExtResource("e2")]
+position = Vector3(0, 0, 0)
+
+[node name="High" parent="Buttons" instance=ExtResource("e2")]
+position = Vector3(0.095, 0, 0)
+
